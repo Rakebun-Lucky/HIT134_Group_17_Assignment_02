@@ -79,9 +79,25 @@ def get_positive_integer(label):
         except ValueError:
             print(f"  [!] '{raw_input}' is not a valid integer. Please try again.")
 
+#clean blank-input handling
+def get_positive_integer(label):
+    while True:
+        raw_input = input(f"  Enter {label} (positive integer): ").strip()
+
+        # Handle blank input explicitly
+        if raw_input == "":
+            print("  [!] Input cannot be blank. Please enter a positive integer.")
+            continue
+
+        try:
+            value = int(raw_input)
+            if value > 0:
+                return value
+            print(f"  [!] '{raw_input}' is not a positive integer. Please try again.")
+        except ValueError:
+            print(f"  [!] '{raw_input}' is not a valid integer. Please try again.")
 
 # Main
-
 def main():
 
     """
